@@ -1,8 +1,14 @@
-from selenium import webdriver
+"""Count titlels on Youtube(0)"""
 import time
+# selenium 4
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchWindowException
+from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome()
+# 브라우저 실행
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get("https://www.youtube.com/")
 
 while True:
@@ -22,3 +28,11 @@ titles = driver.find_elements(By.XPATH, '//*[@id="video-title"]')
 print("영상 갯수: ", len(titles))
 for title in titles:
     print(title.text)
+
+while True:
+    try:
+        pass
+    except NoSuchWindowException:
+        break
+    finally:
+        driver.close()
