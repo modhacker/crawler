@@ -38,8 +38,7 @@ for title, hits in zip(title_list, hits_list):
 
 while True:
     try:
-        pass
+        if len(driver.window_handles) == 0:
+            raise NoSuchWindowException
     except NoSuchWindowException:
         break
-    finally:
-        driver.close()

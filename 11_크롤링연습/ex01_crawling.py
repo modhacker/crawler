@@ -15,8 +15,7 @@ for name in notebook_names:
 
 while True:
     try:
-        pass
+        if len(driver.window_handles) == 0:
+            raise NoSuchWindowException
     except NoSuchWindowException:
         break
-    finally:
-        driver.close()
