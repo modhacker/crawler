@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+    <script>
+        function fun1() {
+            height = document.documentElement.scrollHeight;
+            console.log(height);
+            window.scrollTo(0, document.documentElement.scrollHeight)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="fun1()">페이지높이 가져오기</button>
+</body>
+</html>
