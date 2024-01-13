@@ -1,9 +1,9 @@
 """Login By XPath"""
-import time
 # selenium 4
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchWindowException
 from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -17,4 +17,10 @@ print(title)
 login_button = driver.find_element(By.XPATH, '//*[@id="account"]/div/a')
 login_button.click()
 # 바로 닫히지 않게 대기(확인을 위해)
-time.sleep(5)
+while True:
+    try:
+        pass
+    except NoSuchWindowException:
+        break
+    finally:
+        driver.close()

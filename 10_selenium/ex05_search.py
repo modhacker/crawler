@@ -1,9 +1,9 @@
 """Search By Class"""
-import time
 # selenium 4
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchWindowException
 from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -16,4 +16,10 @@ search.send_keys("파이썬")
 # 입력하는 것 까지 확인하고 검색 버튼 클릭
 search_button = driver.find_element(By.XPATH, '//*[@id="search-btn"]')
 search_button.click()
-time.sleep(5)
+while True:
+    try:
+        pass
+    except NoSuchWindowException:
+        break
+    finally:
+        driver.close()
